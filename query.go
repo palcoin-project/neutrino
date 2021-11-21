@@ -976,7 +976,7 @@ func (s *ChainService) GetBlock(blockHash chainhash.Hash,
 				}
 				block := palcutil.NewBlock(response)
 
-				// Only set height if btcutil hasn't
+				// Only set height if palcutil hasn't
 				// automagically put one in.
 				if block.Height() == palcutil.BlockHeightUnknown {
 					block.SetHeight(int32(height))
