@@ -3,27 +3,34 @@ module github.com/palcoin-project/neutrino
 go 1.17
 
 require (
-	github.com/davecgh/go-spew v1.1.1
 	github.com/lightningnetwork/lnd/queue v1.0.4
-	github.com/stretchr/testify v1.7.0
+	github.com/palcoin-project/palcd v1.0.0
+	github.com/palcoin-project/palclog v0.0.0-20211121134626-4f6c72933587
+	github.com/palcoin-project/palcutil v0.0.0-20211121140308-43375de0997a
+	github.com/palcoin-project/palcwallet v1.0.0
 )
 
 require (
 	github.com/aead/siphash v1.0.1 // indirect
 	github.com/btcsuite/go-socks v0.0.0-20170105172521-4720035b7bfd // indirect
-	github.com/btcsuite/goleveldb v1.0.0 // indirect
-	github.com/btcsuite/snappy-go v1.0.0 // indirect
 	github.com/btcsuite/websocket v0.0.0-20150119174127-31079b680792 // indirect
-	github.com/btcsuite/winsvc v1.0.0 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/decred/dcrd/lru v1.1.0 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/jessevdk/go-flags v1.5.0 // indirect
 	github.com/jrick/logrotate v1.0.0 // indirect
 	github.com/kkdai/bstream v1.0.0 // indirect
-	github.com/kr/pretty v0.1.0 // indirect
-	github.com/palcoin-project/palcd v1.0.0 // indirect
-	github.com/palcoin-project/palclog v0.0.0-20211121134626-4f6c72933587 // indirect
-	github.com/palcoin-project/palcutil v0.0.0-20211121140308-43375de0997a // indirect
+	github.com/lightninglabs/gozmq v0.0.0-20191113021534-d20a764486bf // indirect
+	github.com/lightningnetwork/lnd/clock v1.1.0 // indirect
+	github.com/lightningnetwork/lnd/ticker v1.1.0 // indirect
+	github.com/palcoin-project/palcutil/psbt v0.0.0-20211121162541-d4d3aeb19cba // indirect
+	go.etcd.io/bbolt v1.3.6 // indirect
 	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
+	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110 // indirect
 	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1 // indirect
-	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
+	golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 // indirect
+	golang.org/x/text v0.3.3 // indirect
+	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
+	google.golang.org/grpc v1.42.0 // indirect
+	google.golang.org/protobuf v1.26.0 // indirect
 )
