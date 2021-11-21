@@ -14,9 +14,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/palcoin-project/palcutil"
-
-	"github.com/btcsuite/btclog"
 	"github.com/palcoin-project/neutrino"
 	"github.com/palcoin-project/neutrino/banman"
 	"github.com/palcoin-project/neutrino/headerfs"
@@ -28,6 +25,7 @@ import (
 	"github.com/palcoin-project/palcd/rpcclient"
 	"github.com/palcoin-project/palcd/txscript"
 	"github.com/palcoin-project/palcd/wire"
+	"github.com/palcoin-project/palclog"
 	"github.com/palcoin-project/palcutil/gcs/builder"
 	"github.com/palcoin-project/palcwallet/wallet/txauthor"
 	"github.com/palcoin-project/palcwallet/walletdb"
@@ -35,12 +33,12 @@ import (
 )
 
 var (
-	// Try btclog.LevelInfo for output like you'd see in normal operation,
-	// or btclog.LevelTrace to help debug code. Anything but
-	// btclog.LevelOff turns on log messages from the tests themselves as
+	// Try palclog.LevelInfo for output like you'd see in normal operation,
+	// or palclog.LevelTrace to help debug code. Anything but
+	// palclog.LevelOff turns on log messages from the tests themselves as
 	// well. Keep in mind some log messages may not appear in order due to
 	// use of multiple query goroutines in the tests.
-	logLevel    = btclog.LevelOff
+	logLevel    = palclog.LevelOff
 	syncTimeout = 30 * time.Second
 	syncUpdate  = time.Second
 
@@ -985,7 +983,7 @@ func testRandomBlocks(harness *neutrinoHarness, t *testing.T) {
 				"blocks, filters, and filter headers.")
 		}
 	}
-	if logLevel != btclog.LevelOff {
+	if logLevel != palclog.LevelOff {
 		t.Logf("Finished checking %d blocks and their cfilters",
 			haveBest.Height)
 	}
@@ -996,7 +994,7 @@ func testRandomBlocks(harness *neutrinoHarness, t *testing.T) {
 
 func TestNeutrinoSync(t *testing.T) {
 	// Set up logging.
-	logger := btclog.NewBackend(os.Stdout)
+	logger := palclog.NewBackend(os.Stdout)
 	chainLogger := logger.Logger("CHAIN")
 	chainLogger.SetLevel(logLevel)
 	neutrino.UseLogger(chainLogger)
@@ -1183,7 +1181,7 @@ func waitForSync(t *testing.T, svc *neutrino.ChainService,
 	if err != nil {
 		return err
 	}
-	if logLevel != btclog.LevelOff {
+	if logLevel != palclog.LevelOff {
 		t.Logf("Syncing to %d (%s)", knownBestHeight, knownBestHash)
 	}
 	var haveBest *headerfs.BlockStamp
@@ -1247,7 +1245,7 @@ func waitForSync(t *testing.T, svc *neutrino.ChainService,
 		total += syncUpdate
 	}
 
-	if logLevel != btclog.LevelOff {
+	if logLevel != palclog.LevelOff {
 		t.Logf("Synced cfheaders to %d (%s)", haveBest.Height,
 			haveBest.Hash)
 	}
@@ -1277,7 +1275,7 @@ func waitForSync(t *testing.T, svc *neutrino.ChainService,
 			rescanMtx.RUnlock()
 			continue
 		}
-		if logLevel != btclog.LevelOff {
+		if logLevel != palclog.LevelOff {
 			t.Logf("Rescan caught up to block %d", rescanHeight)
 		}
 		if rescanHeight == haveBest.Height {
@@ -1490,7 +1488,7 @@ func banPeer(t *testing.T, svc *neutrino.ChainService, harness *rpctest.Harness)
 
 		err := svc.BanPeer(peerAddr, banman.ExceededBanThreshold)
 		if err != nil {
-			if logLevel != btclog.LevelOff {
+			if logLevel != palclog.LevelOff {
 				t.Fatalf("unable to ban peer %v: %v", peerAddr,
 					err)
 			}
